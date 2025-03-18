@@ -26,7 +26,7 @@ const Dashboard = () => {
   }>({ data: [], total: 0 });
   const [currentPage, setCurrentPage] = useState(1);
   const [hasSearched, setHasSearched] = useState(false);
-  const [searchParams, setSearchParams] = useState<{
+  const [currentSearchParams, setCurrentSearchParams] = useState<{
     district?: string;
     mandal?: string;
     searchField?: SearchField;
@@ -42,7 +42,7 @@ const Dashboard = () => {
     searchTerm?: string;
   }) => {
     setIsSearching(true);
-    setSearchParams(params);
+    setCurrentSearchParams(params);
     setCurrentPage(1);
     setHasSearched(true);
 
@@ -83,7 +83,7 @@ const Dashboard = () => {
 
     try {
       const searchParams: SearchParams = {
-        ...searchParams,
+        ...currentSearchParams,
         page,
         pageSize,
       };
